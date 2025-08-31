@@ -1,3 +1,3 @@
-# `template`
+# `uv-sops`
 
-Template for generic repositories
+`uv` + `sops`
