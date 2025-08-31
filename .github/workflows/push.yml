@@ -17,3 +17,13 @@ jobs:
           strategy: regex
           root: .bumpversion.cfg
           regex_pattern: 'current_version = (?<version>\d+\.\d+\.\d+)'
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          docker login --username=dycw --password=${{ secrets.GH_PAT }} ghcr.io
+          docker build . --tag ${URL}
+          docker push ${URL}
+        env:
+          URL: ghcr.io/dycw/uv-sops:latest
