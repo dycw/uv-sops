@@ -13,3 +13,5 @@ RUN apt-get update \
     && echo "'sops' installed successfully" \
     && command -v uv >/dev/null \
     && echo "'uv' installed successfully"
+
+CMD ["/bin/sh"]
