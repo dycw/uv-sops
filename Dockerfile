@@ -7,5 +7,3 @@ RUN apt-get update \
     && wget https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64 -O /usr/local/bin/sops \
     && chmod +x /usr/local/bin/sops \
     && rm -rf /var/lib/apt/lists/*
-
-ENTRYPOINT ["/usr/local/bin/uv"]
