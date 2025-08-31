@@ -15,7 +15,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           strategy: regex
-          root: .bumpversion.cfg
+          root: .bumpversion.toml
           regex_pattern: 'current_version = (?<version>\d+\.\d+\.\d+)'
   publish:
     runs-on: ubuntu-latest
