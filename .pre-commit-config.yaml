@@ -1,9 +1,11 @@
 repos:
   - repo: https://github.com/dycw/pre-commit-hooks
-    rev: 0.12.2
+    rev: 0.12.4
     hooks:
       - id: run-bump-my-version
         args: [--mode=bumpversion]
+      # - id: tag-commits
+      #   args: [--mode=bumpversion]
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.15.0
     hooks:
