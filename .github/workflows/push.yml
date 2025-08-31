@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: butlerlogic/action-autotag@1.1.2 # https://github.com/ButlerLogic/action-autotag/issues/45#issuecomment-1825726927
+      - id: autotag
+        uses: butlerlogic/action-autotag@1.1.2 # https://github.com/ButlerLogic/action-autotag/issues/45#issuecomment-1825726927
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
@@ -24,7 +25,8 @@ jobs:
     needs: tag
     steps:
       - uses: actions/checkout@v4
-      - uses: docker/metadata-action@v5
+      - id: meta
+        uses: docker/metadata-action@v5
         with:
           images: |
             name/app
