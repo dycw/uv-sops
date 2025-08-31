@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: run-bump-my-version
         args: [--mode=bumpversion]
+      - id: tag-commits
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.15.0
     hooks:
