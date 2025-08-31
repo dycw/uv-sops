@@ -17,7 +17,7 @@ jobs:
         with:
           strategy: regex
           root: .bumpversion.toml
-          regex_pattern: 'current_version = (?<version>\d+\.\d+\.\d+)'
+          regex_pattern: 'current_version = "(?<version>\d+\.\d+\.\d+)"'
     outputs:
       tagname: ${{ steps.autotag.outputs.tagname }}
   publish:
