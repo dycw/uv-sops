@@ -50,6 +50,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: |
-            org.opencontainers.image.source = "https://github.com/dycw/uv-sops"
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
         env:
           PACKAGE_VISIBILITY: public
