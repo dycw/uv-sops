@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-echo "Hello world 2!"
+echo "Hello world 3!"

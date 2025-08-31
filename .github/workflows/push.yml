@@ -21,9 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          docker login --username=dycw --password=${{ secrets.GH_PAT }} ghcr.io
-          docker build . --tag ${URL}
-          docker push ${URL}
-        env:
-          URL: ghcr.io/dycw/uv-sops:latest
+      - uses: macbre/push-to-ghcr@v16
+        with:
+          image_name: ${{ github.repository }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
