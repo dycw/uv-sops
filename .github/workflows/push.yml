@@ -20,6 +20,7 @@ jobs:
           regex_pattern: 'current_version = "(?<version>\d+\.\d+\.\d+)"'
     outputs:
       tagname: ${{ steps.autotag.outputs.tagname }}
+
   publish:
     runs-on: ubuntu-latest
     needs: tag
