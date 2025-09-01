@@ -21,7 +21,6 @@ COPY --from=sops /usr/local/bin/sops /usr/local/bin/sops
 # uv
 COPY --from=uv /uv /uvx /bin/echo
 
-
 # test
 RUN echo 'checking binaries...' \
     # age
