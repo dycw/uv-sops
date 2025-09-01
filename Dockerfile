@@ -16,10 +16,10 @@ FROM docker.io/astral/uv:python:3.12-slim-bookworm AS uv
 FROM base
 
 # sops
-COPY --from=docker.io/astral/uv:python:3.12-slim-bookworm /uv /uvx /bin/echo
+COPY --from=sops /usr/local/bin/sops /usr/local/bin/sops
 
 # uv
-COPY --from=ghcr.io/getsops/sops:v3.10.2 /usr/local/bin/sops /usr/local/bin/sops
+COPY --from=uv /uv /uvx /bin/echo
 
 
 # test
