@@ -16,11 +16,12 @@ FROM ghcr.io/astral-sh/uv:0.8-python3.12-bookworm-slim AS uv
 FROM base
 
 # sops
-COPY --from=sops /usr/local/bin/sops /usr/local/bin/sops
+COPY --from=sops /usr/local/bin/sops /usr/local/bin/
+COPY --from=sops /usr/bin/age /usr/local/bin/
 
 # uv
-COPY --from=uv /usr/local/bin/uv /usr/local/bin/uv
-COPY --from=uv /usr/local/bin/uvx /usr/local/bin/uvx
+COPY --from=uv /usr/local/bin/uv /usr/local/bin/
+COPY --from=uv /usr/local/bin/uvx /usr/local/bin/
 
 # test
 RUN echo 'checking binaries...' \
