@@ -10,7 +10,7 @@ FROM ghcr.io/getsops/sops:v3.10.2 AS sops
 #  - docker hub | https://hub.docker.com/r/astral/uv
 #  - ghcr       | https://github.com/astral-sh/uv/pkgs/container/uv/versions
 #  - source     | https://github.com/astral-sh/uv/blob/9be016f3f8fdc3ac7974ed82762aa3364f6e8f2b/.github/workflows/build-docker.yml
-FROM ghcr.io/astral/uv:0.8-python3.12-bookworm-slim AS uv
+FROM ghcr.io/astral-sh/uv:0.8-python3.12-bookworm-slim AS uv
 
 # final image
 FROM base
