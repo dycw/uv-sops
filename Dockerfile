@@ -17,22 +17,19 @@ FROM base
 
 # sops
 COPY --from=sops /usr/local/bin/sops /usr/local/bin/
-COPY --from=sops /usr/bin/age /usr/local/bin/
 
 # uv
 COPY --from=uv /usr/local/bin/uv /usr/local/bin/
 COPY --from=uv /usr/local/bin/uvx /usr/local/bin/
 
 # test
-RUN echo 'checking binaries...' \
-    # age
-    && command -v age >/dev/null \
-    && echo "'age' installed successfully" \
-    # sops
-    && command -v sops >/dev/null \
-    && echo "'sops' installed successfully" \
-    # uv
-    && command -v uv >/dev/null \
-    && echo "'uv' installed successfully"
+RUN set -e; \
+    echo 'checking binaries...'; \
+    for bin in age sops uv; do \
+        if ! command -v "${bin}" >/dev/null 2>&1; then \
+            echo "ERROR: '${bin}' not found on PATH" >&2; \
+            exit 1; \
+        fi; \
+    done
 
 CMD ["/bin/sh"]
