@@ -1,9 +1,14 @@
 FROM python:3.12-slim-bookworm
 
-# sops - https://github.com/getsops/sops/blob/1c1b3c8787a9837bdeab616903e44666bae404d3/.release/Dockerfile
+# sops
+#  - ghcr   | https://github.com/getsops/sops/pkgs/container/sops/versions
+#  - source | https://github.com/getsops/sops/blob/1c1b3c8787a9837bdeab616903e44666bae404d3/.release/Dockerfile
 COPY --from=ghcr.io/getsops/sops:v3.10.2 /usr/local/bin/sops /usr/local/bin/sops
 
-# uv - https://github.com/astral-sh/uv/blob/9be016f3f8fdc3ac7974ed82762aa3364f6e8f2b/.github/workflows/build-docker.yml
+# uv
+#  - docker hub | https://hub.docker.com/r/astral/uv
+#  - ghcr       | https://github.com/astral-sh/uv/pkgs/container/uv/versions
+#  - source     | https://github.com/astral-sh/uv/blob/9be016f3f8fdc3ac7974ed82762aa3364f6e8f2b/.github/workflows/build-docker.yml
 COPY --from=docker.io/astral/uv:python:3.12-slim-bookworm /uv /uvx /bin/echo
 
 # RUN apt-get update \
