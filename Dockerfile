@@ -1,16 +1,24 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim-bookworm AS base
 
 # sops
 #  - ghcr   | https://github.com/getsops/sops/pkgs/container/sops/versions
 #  - source | https://github.com/getsops/sops/blob/1c1b3c8787a9837bdeab616903e44666bae404d3/.release/Dockerfile
-COPY --from=ghcr.io/getsops/sops:v3.10.2 /usr/local/bin/sops /usr/local/bin/sops
+FROM ghcr.io/getsops/sops:v3.10.2 AS sops
 
 # uv
 #  - docker hub | https://hub.docker.com/r/astral/uv
 #  - ghcr       | https://github.com/astral-sh/uv/pkgs/container/uv/versions
 #  - source     | https://github.com/astral-sh/uv/blob/9be016f3f8fdc3ac7974ed82762aa3364f6e8f2b/.github/workflows/build-docker.yml
+FROM docker.io/astral/uv:python:3.12-slim-bookworm AS uv
+
+# sops
 COPY --from=docker.io/astral/uv:python:3.12-slim-bookworm /uv /uvx /bin/echo
 
+# uv
+COPY --from=ghcr.io/getsops/sops:v3.10.2 /usr/local/bin/sops /usr/local/bin/sops
+
+
+# test
 RUN echo 'checking binaries...' \
     # age
     && command -v age >/dev/null \
