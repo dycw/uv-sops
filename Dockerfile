@@ -19,7 +19,8 @@ FROM base
 COPY --from=sops /usr/local/bin/sops /usr/local/bin/sops
 
 # uv
-COPY --from=uv /uv /uvx /bin/
+COPY --from=uv /usr/local/bin/uv /usr/local/bin/uv
+COPY --from=uv /usr/local/bin/uvx /usr/local/bin/uvx
 
 # test
 RUN echo 'checking binaries...' \
