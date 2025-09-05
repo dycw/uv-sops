@@ -36,7 +36,7 @@ COPY --from=uv /usr/local/bin/uvx /usr/local/bin/
 # test
 RUN set -e; \
     echo 'checking binaries...'; \
-    for bin in age sops uv; do \
+    for bin in age nslookup ping sops uv; do \
         if ! command -v "${bin}" >/dev/null 2>&1; then \
             echo "ERROR: '${bin}' not found on PATH" >&2; \
             exit 1; \
