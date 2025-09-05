@@ -6,6 +6,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends age \
     && rm -rf /var/lib/apt/lists/*
 
+# network
+RUN apt-get update \
+    && apt-get install -y --no install-recommends dnsutils inetutils-traceroute iputils-ping net-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+
 # sops
 #  - ghcr   | https://github.com/getsops/sops/pkgs/container/sops/versions
 #  - source | https://github.com/getsops/sops/blob/1c1b3c8787a9837bdeab616903e44666bae404d3/.release/Dockerfile
