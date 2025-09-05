@@ -8,9 +8,8 @@ RUN apt-get update \
 
 # network
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends dnsutils inetutils-traceroute iputils-ping net-tools \
+    && apt-get install -y --no-install-recommends dnsutils inetutils-traceroute iputils-ping iproute2 net-tools \
     && rm -rf /var/lib/apt/lists/*
-
 
 # sops
 #  - ghcr   | https://github.com/getsops/sops/pkgs/container/sops/versions
